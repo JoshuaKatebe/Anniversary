@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #c9a84c;
+  --color-gold-light: #f0d080;
+  --color-gold-dark: #8b6914;
+  --color-deep: #0a0612;
+  --color-plum: #1a0a2e;
+  --color-rose: #8b2252;
+  --color-cream: #fdf6e3;
+  --color-white: #fff8f0;
+
+  --font-playfair: var(--font-playfair), serif;
+  --font-cormorant: var(--font-cormorant), serif;
+  --font-cinzel: var(--font-cinzel), serif;
+}
+
+:root {
+  --gold: #c9a84c;
+  --gold-light: #f0d080;
+  --gold-dark: #8b6914;
+  --deep: #0a0612;
+  --plum: #1a0a2e;
+  --rose: #8b2252;
+  --cream: #fdf6e3;
+  --white: #fff8f0;
+}
+
+body {
+  background: var(--deep);
+  color: var(--cream);
+  font-family: var(--font-cormorant);
+}
+
+@layer utilities {
+  .text-shimmer {
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, #fff8e1 60%, var(--gold) 80%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 300% 100%;
+    animation: shimmer 4s linear infinite;
+  }
+
+  .badge-pulse {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 20px rgba(201,168,76,0.8); }
+  50%      { box-shadow: 0 0 40px rgba(201,168,76,1), 0 0 60px rgba(240,208,128,0.4); }
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  14%      { transform: scale(1.3); }
+  28%      { transform: scale(1); }
+  42%      { transform: scale(1.2); }
+  70%      { transform: scale(1); }
+}
